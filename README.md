@@ -1,2 +1,2 @@
-# terraform
-root_directories for terraform modules
+# Terraform Practices Files
+repository for upload the terraform practice files
