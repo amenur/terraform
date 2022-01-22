@@ -1,7 +1,0 @@
-.terraform* 
-*.plan* 
-*.out* 
-*.json 
-*.son
-*tfstate*
-init*
