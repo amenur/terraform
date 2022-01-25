@@ -5,3 +5,4 @@
 *.son
 *.tfvars
 *tfstate*
+*/tfplan.*
