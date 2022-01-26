@@ -10,6 +10,6 @@ module "terraform_backend" {
   read_capacity        = 1
   write_capacity       = 1
   dynamodb_encryption  = true
-  log_prefix = "log/"
+  log_prefix           = "log/"
 
 }
