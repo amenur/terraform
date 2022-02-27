@@ -9,9 +9,9 @@ module "vpc_animals4life" {
   public_cidr_block = [for i in range(48, 177, 64) : cidrsubnet("10.16.0.0/16", 8, i)]
   vpc_tags          = "animals4life-vpc"
 
-  module_enabled_ngw = true
+  enable_ngw = false
 
-  module_enabled_vpc_flow_log = true
+  enable_vpc_flow_log = false
 
   count_private = 9
 
