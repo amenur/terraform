@@ -1,8 +1,7 @@
-.terraform* 
-*.plan
-*.out 
-*.json 
-*.son
-*.tfvars
-*tfstate*
-*/tfplan.*
+*/terraform*
+*/.teraform*
+*/*.plan* 
+*/*.out* 
+*/*.json 
+*/*.son
+*/init.*
