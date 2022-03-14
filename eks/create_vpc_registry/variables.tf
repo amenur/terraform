@@ -1,72 +1,75 @@
+
 locals {
-  cluster_name = "aramis_eks"
-  region = data.terraform_remote_state.backend.outputs.region
+  # We obtain the available az's (however, we don't use it, if you want to use it, just add in azs the local variable)
+  azs          = data.aws_availability_zones.available.names
+  cluster_name = "eks-POC-Aramis"
+  region       = data.terraform_remote_state.backend.outputs.region
 }
 
 
 variable "region" {
-  type = string
+  type        = string
   description = "Region for deploy the infrastructure"
-  default = "eu-west-1"
+  default     = "eu-west-1"
 }
 
 variable "profile" {
-  type = string
+  type        = string
   description = "Profile for deploy the infrastructure"
-  default = "aramis"
+  default     = "aramis"
 }
 
 variable "vpc_name" {
-  type = string
+  type        = string
   description = "Name of the VPC"
 }
 
 variable "vpc_cidr_block" {
-  type = string
+  type        = string
   description = "Cidr Block for the VPC"
 }
 
 variable "azs" {
-  type = list(string)
+  type        = list(string)
   description = "List of Availabilities zones for deploy the VPC infrastructure"
 }
 
 variable "private_subnets" {
-  type = list(string)
+  type        = list(string)
   description = "List of Private Subnets"
 }
 
 variable "public_subnets" {
-  type = list(string)
+  type        = list(string)
   description = "List of Public Subnets"
 }
 
 variable "enable_nat_gateway" {
-  type = bool
+  type        = bool
   description = "Enable/Disable the creation of the nat gateways"
 }
 
 variable "enable_single_nat_gateway" {
-  type = bool
+  type        = bool
   description = "Enable/Disable the creation of one single nat gateway for all az's"
 }
 
-variable "enable_reuse_ips" {
-  type = bool
-  description = "Enable/Disable the reuse of ips"
-  default = true
-}
+#variable "enable_reuse_ips" {
+#  type = bool
+#  description = "Enable/Disable the reuse of ips"
+#  default = true
+#}
 
 variable "enable_vpn_gateway" {
-  type = bool
+  type        = bool
   description = "Enable/Disable the VPN Gateway in the VPC"
-  default = false
+  default     = false
 }
 
 variable "enable_dns_hostnames" {
-  type = bool
+  type        = bool
   description = "Enable/Disable dns hostnames"
-  default = true
+  default     = true
 }
 
 variable "enable_dns_support" {
@@ -75,46 +78,58 @@ variable "enable_dns_support" {
   default     = true
 }
 
-variable "enable_classiclink" {
-  type = bool
-  description = "Enable/Disable classiclink"
-  default = true
-}
-
-variable "enable_classlink_dns_support" {
-  type = bool
-  description = "Enable/Disable classiclink dns support"
-  default = true
-}
+#variable "enable_classiclink" {
+#  type = bool
+#  description = "Enable/Disable classiclink"
+#  default = true
+#}
+#
+#variable "enable_classlink_dns_support" {
+#  type = bool
+#  description = "Enable/Disable classiclink dns support"
+#  default = true
+#}
 
 variable "enable_flow_log" {
-  type = bool
+  type        = bool
   description = "Enable/Disable vpc flow log"
-  default = false
+  default     = false
 }
 
 variable "create_flow_log_cloudwatch_log_group" {
-  type = bool
+  type        = bool
   description = "Create the flow log, cloudwatch log group"
-  default = false
+  default     = false
 }
 
 variable "create_flow_log_cloudwatch_iam_role" {
-  type = bool
+  type        = bool
   description = "Create the iam role, necessary for the vpc flow log log group"
-  default = false
+  default     = false
 }
 
 variable "flow_log_aggregation_interval" {
-  type = number
+  type        = number
   description = "Vpc flow log aggregation interval"
-  default = 60
+  default     = 60
 }
 
 variable "vpc_tags" {
-  type = map(string)
+  type        = map(string)
   description = "Vpc tags"
 }
+
+#variable "enable_ssm_endpoint" {
+#  type = bool
+#  description = "Enable/Disable VPC Endpoint for SSM Service"
+#  default = false
+#}
+#
+#variable "ssm_endpoint_private_dns_enabled" {
+#  type = bool
+#  description = "Enable/Disable DNS for SSM Private Endpoint"
+#  default = false
+#}
 
 #variable "public_subnet_tags" {
 #  type = map(string)
